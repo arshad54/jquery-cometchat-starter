@@ -1,22 +1,12 @@
-$(document).ready(function() {
-    chatService.fetchMessages();
+$(document).ready(function () {
+  chatService.initializeApp();
 
-    
-    $('#message-form').submit(function(e) {    
-        e.preventDefault(); 
-        let message = $('#input-text').val(); 
+  $("#message-form").submit(function (e) {
+    e.preventDefault();
 
-        let text = { 
-            username: "oluyemi",
-            message 
-        } 
+    $(".old-chats").remove();
+    chatService.sendMessage();
 
-        $('.old-chats').remove();
-
-        chatService.sendMessage(text);
-
-        chatService.onMessageReceived();
-        
-        $('#message-form').trigger('reset');
-    });
+    $("#message-form").trigger("reset");
+  });
 });

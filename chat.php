@@ -134,17 +134,15 @@ if ((isset($_SESSION['authenticated']))) {
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
-
-    <!-- Dummy scripts -->
-    <script src="js/chatService.js"></script>
-    <script src="js/script.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/@cometchat-pro/chat@2.0.12/CometChat.js"></script>
 
     <script>
-    $(document).ready(function() {
-        var username = $('#username').text();
-        console.log(username);
-    })
+    const APP_ID = '209791c54149c28';
+    const REST_API_KEY = '49e7e28c1830e23e799772d7f8f8972bb2e43d10';
     </script>
+
+    <script src="js/chatService.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 
