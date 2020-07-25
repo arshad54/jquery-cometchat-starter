@@ -133,12 +133,11 @@ if ((isset($_SESSION['authenticated']))) {
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://unpkg.com/@cometchat-pro/chat@1.8/CometChat.js"></script>
 
 
     <!-- Dummy scripts -->
-    <script src="js/chatService-dummy.js"></script>
-    <script src="js/script-dummy.js"></script>
+    <script src="js/chatService.js"></script>
+    <script src="js/script.js"></script>
 
     <script>
     $(document).ready(function() {
