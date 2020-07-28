@@ -16,10 +16,22 @@ const chatService = (function () {
       CometChat.init(APP_ID, cometChatAppSetting).then(
         () => {
           console.log("Initialization completed successfully");
-          this.createUserOnCometChat($("#username").text());
+          this.retrieveUserDetails($("#username").text());
         },
         (error) => {
           console.log("Initialization failed with error:", error);
+        }
+      );
+    },
+    retrieveUserDetails: function (username) {
+      CometChat.getUser(username).then(
+        (user) => {
+          console.log("User details fetched for user:", user);
+          this.authLoginUser(user.authToken);
+        },
+        (error) => {
+          console.log("User details fetching failed with error:", error);
+          this.createUserOnCometChat(username);
         }
       );
     },
@@ -44,7 +56,7 @@ const chatService = (function () {
         .then((response) => response.json())
         .then((result) => {
           this.addUserToAGroup(result.data.uid);
-          console.log(result);
+          console.log(result, "User created");
         })
         .catch((error) => console.log(error));
     },
@@ -66,7 +78,7 @@ const chatService = (function () {
         .then((response) => response.json())
         .then((result) => {
           this.generateAuthToken(uid);
-          console.log(result);
+          console.log(result, "User added to a group");
         });
     },
     generateAuthToken: function (uid) {
@@ -82,8 +94,7 @@ const chatService = (function () {
       })
         .then((response) => response.json())
         .then((result) => {
-          console.log(result);
-          console.log(result.data.authToken);
+          console.log(result, "Token generated");
           this.authLoginUser(result.data.authToken);
         });
     },
